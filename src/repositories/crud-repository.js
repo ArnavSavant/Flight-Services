@@ -1,4 +1,7 @@
 const { Logger } = require("../config");
+const AppError = require("../utils/errors/app-error");
+const { StatusCodes } = require("http-status-codes");
+
 
 class CrudRepository {
 	constructor(model) {
@@ -16,6 +19,9 @@ class CrudRepository {
 				id: data,
 			},
 		});
+		if(response == 0) {
+			throw new AppError('Unable to delete the data',StatusCodes.NOT_FOUND);
+		}
 		return response;
 	}
 
@@ -32,6 +38,9 @@ class CrudRepository {
 
 	async get(data) {
 		const response = await this.model.findByPk(data);
+		if(!response) {
+			throw new AppError('Unable to fetch the data',StatusCodes.NOT_FOUND);
+		}
 		return response;
 	}
 

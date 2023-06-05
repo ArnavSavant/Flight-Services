@@ -9,7 +9,12 @@ router.post('/',
                ,AirplaneController.createAirplane);
 
 //api/v1/airplanes GET
-router.get('/',
-               AirplaneController.getAirplanes);
+router.get('/',AirplaneController.getAirplanes);
+
+// api/v/airplanes/:id GET
+router.get("/:id", AirplaneController.getAirplane);
+
+// api/v/airplanes/:id DELETE
+router.delete("/:id", AirplaneController.destroyAirplane);
 
 module.exports = router;
