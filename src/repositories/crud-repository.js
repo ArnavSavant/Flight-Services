@@ -1,4 +1,4 @@
-const {Logger} =  require('../config');
+const { Logger } = require("../config");
 
 class CrudRepository {
 	constructor(model) {
@@ -11,51 +11,33 @@ class CrudRepository {
 	}
 
 	async delete(data) {
-		try {
-			const response = await this.model.destroy({
-				where: {
-					id: data,
-				},
-			});
-			return response;
-		} catch (error) {
-			Logger.error("Something went wrong in the CRUD Repo : delete");
-			throw error;
-		}
+		const response = await this.model.destroy({
+			where: {
+				id: data,
+			},
+		});
+		return response;
 	}
 
-	async update(data, id) { // data -> {col:value, .....}
-		try {
-			const response = await this.model.update(data, {
-				where: {
-					id: id,
-				},
-			});
-			return response;
-		} catch (error) {
-			Logger.error("Something went wrong in the CRUD Repo : update");
-			throw error;
-		}
+	async update(data, id) {
+		// data -> {col:value, .....}
+
+		const response = await this.model.update(data, {
+			where: {
+				id: id,
+			},
+		});
+		return response;
 	}
-   
-   async get(data) {
-      try {
-         const response = await this.model.findByPk(data);
-         return response;
-      } catch (error) {
-         Logger.error("Something went wrong in the CRUD Repo : get");
-         throw error;
-      }
-   }
+
+	async get(data) {
+		const response = await this.model.findByPk(data);
+		return response;
+	}
 
 	async getAll() {
-		try {
-			const response = await this.model.findAll();
-			return response;
-		} catch (error) {
-			Logger.error("Something went wrong in the CRUD Repo : getAll");
-			throw error;
-		}
+		const response = await this.model.findAll();
+		return response;
 	}
 }
 

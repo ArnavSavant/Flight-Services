@@ -20,11 +20,26 @@ async function createAirplane(req,res) {
    catch (error) {
       ErrorResponse.error = error;
       return res
-        .status(error.statusCode)
-        .json(ErrorResponse);
+               .status(error.statusCode)
+               .json(ErrorResponse);
    }
 }
 
-module.exports = {
-   createAirplane,
+async function getAirplanes(req,res) {
+   try {
+      const airplanes = await AirplaneService.getAirplanes();
+      SuccessResponse.data = airplanes;
+      return res
+               .status(StatusCodes.OK)
+               .json(SuccessResponse);
+   } catch (error) {
+      ErrorResponse.error = error;
+      return res
+               .status(error.statusCode)
+               .json(ErrorResponse);
+   }
 }
+module.exports = {
+	createAirplane,
+	getAirplanes,
+};
