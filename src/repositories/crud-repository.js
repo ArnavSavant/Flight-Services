@@ -33,6 +33,9 @@ class CrudRepository {
 				id: id,
 			},
 		});
+		if(response[0] == 0) {
+			throw new AppError("Unable to delete the data", StatusCodes.NOT_FOUND);
+		}
 		return response;
 	}
 
