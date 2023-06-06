@@ -17,10 +17,10 @@ router.post("/",
 // api/v/city/:id DELETE
 router.delete("/:id", CityController.destroyCity);
 
-// // api/v/city/:id PATCH
-// router.patch("/:id",
-// 	CityMiddlewares.validateUpdateRequest,
-// 	CityController.updateCity
-// );
+// api/v/city/:id PATCH
+router.patch("/:id",
+	CityMiddlewares.validateUpdateRequest,
+	CityController.updateCity
+);
 
 module.exports = router;

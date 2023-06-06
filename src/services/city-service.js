@@ -44,7 +44,27 @@ async function destroyCity(id) {
 		);
 	}
 }
+
+async function updateCity(data, id) {
+	try {
+		const response = await cityRepository.update(data, id);
+		// const city = await getCity(id);
+		return response;
+	} catch (error) {
+		if (error.statusCode == StatusCodes.NOT_FOUND) {
+			throw new AppError(
+				"The city you requested to update is not present in the database",
+				error.statusCode
+			);
+		}
+		throw new AppError(
+			"Something went wrong",
+			StatusCodes.INTERNAL_SERVER_ERROR
+		);
+	}
+}
 module.exports = {
 	createCity,
 	destroyCity,
+	updateCity,
 };
