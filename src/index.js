@@ -10,6 +10,6 @@ app.use(express.urlencoded());
 
 app.use('/api',routes);
 
-app.listen(serverConfig.PORT, async () => {
+app.listen(serverConfig.PORT, () => {
 	console.log(`Succesfully listening on PORT: ${serverConfig.PORT}`);
 });
