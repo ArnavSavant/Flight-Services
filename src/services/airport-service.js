@@ -7,7 +7,6 @@ const airportRepository = new AirportRepository();
 
 async function createAirport(data) {
 	try {
-		console.log(data);
 		const airport = await airportRepository.create(data);
 		return airport;
 	} catch (error) {
