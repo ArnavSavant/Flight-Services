@@ -84,6 +84,7 @@ function validateTime(req, res, next) {
 		);
 		return res.status(StatusCodes.BAD_REQUEST).json(ErrorResponse);
 	}
+	next();
 }
 // function validateUpdateRequest(req, res, next) {
 // 	if (!req.body.name) {

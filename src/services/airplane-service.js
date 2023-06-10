@@ -17,7 +17,7 @@ async function createAirplane(data) {
          });
          throw new AppError(explanation, StatusCodes.BAD_REQUEST);
       }
-      throw new AppError("Cannot Create an Aiprlane Object", StatusCodes.INTERNAL_SERVER_ERROR);;
+      throw new AppError("Cannot Create an Aiprlane Object", StatusCodes.INTERNAL_SERVER_ERROR);
    }
 }
 
