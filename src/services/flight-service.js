@@ -58,12 +58,12 @@ async function getAllFlights(query) {
 		sortFilter = sortFilters;
 	}
 	try {
-		console.log(customFilter);
-		const flights = flightRepository.getAllFlights(customFilter,sortFilter);
+		const flights = await flightRepository.getAllFlights(customFilter,sortFilter);
 		return flights;
 	} catch (error) {
+		console.log(error);
 		throw new AppError(
-			"Cannot Create an Aiprlane Object",
+			"Cannot Fetch the flight Object",
 			StatusCodes.INTERNAL_SERVER_ERROR
 		);
 	}
