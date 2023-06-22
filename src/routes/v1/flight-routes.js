@@ -3,7 +3,7 @@ const router = express.Router();
 const { FlightMiddlewares } = require("../../middlewares");
 const { FlightController } = require("../../controllers");
 
-//api/v1/airports POST
+//api/v1/flights POST
 router.post(
 	"/",
 	FlightMiddlewares.validateCreateRequest,
@@ -11,11 +11,11 @@ router.post(
 	FlightController.createFlight
 );
 
-//api/v1/airports/?{query-params} GET
+//api/v1/flights/?{query-params} GET
 router.get("/", FlightController.getAllFlights);
 
-// // api/v/airports/:id GET
-// router.get("/:id", AirportController.getAirport);
+// api/v/flights/:id GET
+router.get("/:id", FlightController.getFlight);
 
 // // api/v/airports/:id DELETE
 // router.delete("/:id", AirportController.destroyAirport);
