@@ -31,34 +31,37 @@ async function getAllFlights(query) {
 	let customFilter = {};
 	let sortFilter = {};
 	const endingTripTime = "23:59:59";
-	if(query.trip) {
-		[departureAirportId, arrivalAirportId] = query.trip.split('-');
+	if (query.trip) {
+		[departureAirportId, arrivalAirportId] = query.trip.split("-");
 		customFilter.departureAirportId = departureAirportId;
 		customFilter.arrivalAirportId = arrivalAirportId;
 	}
-	if(query.price) {
-		[minPrice, maxPrice] = query.price.split('-');
+	if (query.price) {
+		[minPrice, maxPrice] = query.price.split("-");
 		customFilter.price = {
-			[Op.between]:[minPrice,((maxPrice === undefined) ? 20000 : maxPrice)],
+			[Op.between]: [minPrice, maxPrice === undefined ? 20000 : maxPrice],
 		};
 	}
-	if(query.travellers) {
+	if (query.travellers) {
 		customFilter.totalSeats = {
 			[Op.gte]: query.travellers,
 		};
 	}
-	if(query.tripDate) {
+	if (query.tripDate) {
 		customFilter.departureTime = {
-			[Op.between]:[query.tripDate,query.tripDate+" "+endingTripTime],
+			[Op.between]: [query.tripDate, query.tripDate + " " + endingTripTime],
 		};
 	}
-	if(query.sort) {
+	if (query.sort) {
 		const params = query.sort.split(",");
-		const sortFilters = params.map((params)=>params.split('_'));
+		const sortFilters = params.map((params) => params.split("_"));
 		sortFilter = sortFilters;
 	}
 	try {
-		const flights = await flightRepository.getAllFlights(customFilter,sortFilter);
+		const flights = await flightRepository.getAllFlights(
+			customFilter,
+			sortFilter
+		);
 		return flights;
 	} catch (error) {
 		console.log(error);
@@ -80,8 +83,25 @@ async function getFlight(id) {
 		);
 	}
 }
+
+async function updateRemainingSeats(data) {
+	try {
+		const flight = flightRepository.updateRemainingSeats(
+			data.flightId,
+			data.seats,
+			data.dec
+		);
+		return flight;
+	} catch (error) {
+		throw new AppError(
+			"Cannot update the flight Object",
+			StatusCodes.INTERNAL_SERVER_ERROR
+		);
+	}
+}
 module.exports = {
 	createFlight,
 	getAllFlights,
 	getFlight,
+	updateRemainingSeats,
 };

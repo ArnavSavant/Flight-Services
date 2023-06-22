@@ -20,11 +20,11 @@ router.get("/:id", FlightController.getFlight);
 // // api/v/airports/:id DELETE
 // router.delete("/:id", AirportController.destroyAirport);
 
-// // api/v/airports/:id PATCH
-// router.patch(
-// 	"/:id",
-// 	AirportMiddlewares.validateUpdateRequest,
-// 	AirportController.updateAirport
-// );
+// api/v/flights/:id/seats PATCH
+router.patch(
+	"/:id/seats",
+	// AirportMiddlewares.validateUpdateRequest,
+	FlightController.updateRemainingSeats
+);
 
 module.exports = router;
