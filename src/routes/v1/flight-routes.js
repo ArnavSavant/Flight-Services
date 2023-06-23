@@ -14,16 +14,16 @@ router.post(
 //api/v1/flights/?{query-params} GET
 router.get("/", FlightController.getAllFlights);
 
-// api/v/flights/:id GET
+// api/v1/flights/:id GET
 router.get("/:id", FlightController.getFlight);
 
-// // api/v/airports/:id DELETE
+// // api/v1/airports/:id DELETE
 // router.delete("/:id", AirportController.destroyAirport);
 
-// api/v/flights/:id/seats PATCH
+// api/v1/flights/:id/seats PATCH
 router.patch(
 	"/:id/seats",
-	// AirportMiddlewares.validateUpdateRequest,
+	FlightMiddlewares.validateUpdateRemainingSeatsRequest,
 	FlightController.updateRemainingSeats
 );
 

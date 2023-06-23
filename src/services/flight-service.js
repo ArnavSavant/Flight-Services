@@ -85,7 +85,7 @@ async function getFlight(id) {
 }
 
 async function updateRemainingSeats(data) {
-	try {
+	try {	
 		const flight = flightRepository.updateRemainingSeats(
 			data.flightId,
 			data.seats,
