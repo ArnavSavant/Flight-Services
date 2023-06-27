@@ -1,7 +1,13 @@
 # Backend Flight Service
 This is the backend of Flight-Service.
-It is one of the microservice of the complete PROJECT which can be found at https://github.com/ArnavSavant/Flights-Project.git
- 
+It is one of the microservice of the complete PROJECT which mimics the creation of airplanes,airports,cities and the flights.
+
+## Other Microservices
+
+- `flights-services`: https://github.com/ArnavSavant/Flight-Services
+- `flights-booking-services`: https://github.com/ArnavSavant/Flight-Booking-Service
+- `api-gateway`: https://github.com/ArnavSavant/API-Gateway
+
 ## Project Structure
 
 The project structure is as follows:
@@ -37,20 +43,25 @@ To set up the project, follow these steps:
 1. Download this template from GitHub and open it in your favorite text editor.
 
 2. Navigate to the project folder in your terminal and execute the following command to install the dependencies:
+
    ```
    npm install
    ```
 
 3. In the root directory, create a `.env` file and add the following environment variables:
+
    ```
    PORT=<port number of your choice>
    ```
+
    Example:
+
    ```
    PORT=3000
    ```
 
 4. Navigate to the `src` folder in your terminal and execute the following command to initialize Sequelize:
+
    ```
    npx sequelize init
    ```
