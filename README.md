@@ -1,5 +1,7 @@
 # Backend Flight Service
-
+This is the backend of Flight-Service.
+It is one of the microservice of the complete PROJECT which can be found at https://github.com/ArnavSavant/Flights-Project.git
+ 
 ## Project Structure
 
 The project structure is as follows:
