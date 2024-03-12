@@ -5,6 +5,7 @@ const { response } = require("express");
 const { ErrorResponse, SuccessResponse } = require("../utils/common");
 
 async function createAirport(req, res) {
+	console.log("inside controller");
 	try {
 		const airport = await AirportService.createAirport({
 			name: req.body.name,

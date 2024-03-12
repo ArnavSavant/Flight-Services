@@ -3,6 +3,7 @@ const { StatusCodes } = require("http-status-codes");
 const { ErrorResponse } = require("../utils/common");
 const AppError = require("../utils/errors/app-error");
 function validateCreateRequest(req, res, next) {
+	console.log("Hello from middleware");
 	if (!req.body.name) {
 		ErrorResponse.messages = "Something went wrong while creating an airport";
 		ErrorResponse.error = new AppError(

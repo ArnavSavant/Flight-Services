@@ -13,12 +13,12 @@ module.exports = (sequelize, DataTypes) => {
 				onDelete: "CASCADE",
 				as: "Airplane_Details",
 			});
-      this.belongsTo(models.Airport, {
+			this.belongsTo(models.Airport, {
 				foreignKey: "departureAirportId",
 				onDelete: "CASCADE",
 				as: "Departure_Airport",
 			});
-      this.belongsTo(models.Airport, {
+			this.belongsTo(models.Airport, {
 				foreignKey: "arrivalAirportId",
 				onDelete: "CASCADE",
 				as: "Arrival_Airport",
@@ -58,7 +58,8 @@ module.exports = (sequelize, DataTypes) => {
 			boardingGate: {
 				type: DataTypes.STRING,
 			},
-			totalSeats: { //total remaining seats
+			totalSeats: {
+				//total remaining seats
 				type: DataTypes.INTEGER,
 				allowNull: false,
 			},
